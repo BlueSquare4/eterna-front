@@ -1,6 +1,6 @@
 # **Axiom Trade — Token Discovery Table**
 
-**Live Demo:** [https://v0-token-trading-table-tau.vercel.app/](https://v0-token-trading-table-tau.vercel.app/)
+**Live Demo:** [https://v0-token-trading-table-tau.vercel.app/]([https://v0-token-trading-table-tau.vercel.app/](https://v0-token-trading-table-rhgsomt38-bluesquare4s-projects.vercel.app/))
 
 A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery Interface**, featuring real-time pricing, advanced filtering, and professional trading UI/UX patterns optimized for performance.
 
