@@ -1,5 +1,7 @@
 # **Axiom Trade — Token Discovery Table**
 
+**Live Demo:** [https://v0-token-trading-table-tau.vercel.app/]([[https://v0-token-trading-table-tau.vercel.app/](https://v0-token-trading-table-rhgsomt38-bluesquare4s-projects.vercel.app/)](https://v0-token-trading-table-tau.vercel.app/))
+
 A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery Interface**, featuring real-time pricing, advanced filtering, and professional trading UI/UX patterns optimized for performance.
 
 ---
@@ -13,7 +15,7 @@ A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery I
   * New Pairs
   * Final Stretch
   * Migrated Tokens
-* **Real-Time Price Updates** (WebSocket mock with smooth animations)
+* **Real-Time Price Updates** (WebSocket mock with animated transitions)
 * **Column Sorting** (ascending/descending)
 * **Global Search Filter** (name, symbol, contract address)
 * **Fully Responsive Layout**
@@ -24,7 +26,7 @@ A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery I
 * **Tooltips** for metric explanations
 * **Modals** for deep analytics
 * **Dropdown Menus** (copy address, explore, set alerts)
-* **Skeleton Loaders** with shimmer effect
+* **Skeleton Loaders** with shimmer animation
 * **Error Boundaries** for fallback UI
 
 ---
@@ -32,21 +34,21 @@ A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery I
 ## **⚡ Performance Optimizations**
 
 * React Compiler enabled
-* Highly memoized row and header components
+* Highly memoized table rows & headers
 * 300ms debounced search
-* Architecture ready for virtual scrolling (1000+ tokens)
-* Code splitting & lazy-loaded heavy components
-* Optimized formatting and stable sorting
+* Virtualization-ready architecture (scale to 1000+ rows)
+* Code splitting & lazy loading
+* Optimized number formatting & stable sorting
 
 ---
 
 ## **♿ Accessibility**
 
-* Fully semantic HTML + ARIA
-* Keyboard navigation across tabs, rows, menus
+* Semantic HTML + ARIA attributes
+* Full keyboard navigation
 * Focus trapping & restoration in dialogs
-* Screen reader-friendly labels
-* High contrast ratios (WCAG AA compliant)
+* Screen reader–friendly labels
+* WCAG AA compliant color contrast
 
 ---
 
@@ -64,7 +66,7 @@ A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery I
 ### **UI Libraries**
 
 * **Radix UI** (Popover, Tooltip, Dropdown)
-* **shadcn/ui patterns** (Dialog, DropdownMenu)
+* **shadcn/ui patterns**
 * **Lucide Icons**
 
 ---
@@ -103,8 +105,7 @@ A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery I
 │   │   └── slices/
 │   ├── websocket/
 │   │   └── price-stream.ts
-│   ├── a11y/
-│   │   └── focus-manager.ts
+│   ├── a11y/focus-manager.ts
 │   ├── performance/metrics.ts
 │   ├── types.ts
 │   ├── format.ts
@@ -153,7 +154,7 @@ App (Providers)
 * Debounced search
 * Code splitting
 * Image optimization
-* Virtualization-ready table architecture
+* Virtualization-ready table design
 
 ---
 
@@ -161,14 +162,14 @@ App (Providers)
 
 The WebSocket mock provides:
 
-* Random ±1% price oscillations
+* ±1% price oscillations
 * Green/red animated transitions
-* Auto reconnection with backoff
-* Heartbeat pings for stability
+* Heartbeat pings
+* Auto reconnect with backoff
 
-### Replace With Live WebSocket
+### Replace Mock with Real WebSocket
 
-Edit `lib/websocket/price-stream.ts`:
+Update `lib/websocket/price-stream.ts`:
 
 ```ts
 this.ws = new WebSocket('wss://your-api.com/prices');
@@ -178,7 +179,7 @@ this.ws = new WebSocket('wss://your-api.com/prices');
 
 ## **🧪 Getting Started**
 
-### Install
+### Install & Run
 
 ```bash
 git clone <repository>
@@ -186,7 +187,7 @@ npm install
 npm run dev
 ```
 
-### Developer Tools
+### Useful Commands
 
 ```bash
 npm run dev -- --debug
@@ -208,19 +209,13 @@ npm run lighthouse
 
 ## **🔮 Future Enhancements**
 
-* Real exchange WebSocket feed
+* Live exchange WebSocket feed
 * Price alerts & notifications
 * User authentication + watchlists
 * TradingView lightweight charts
 * CSV/PDF export
 * Light/dark theme toggle
-* Liquidity & volatility filter sliders
+* Liquidity & volatility filters
 * Full historical charting
-
----
-
-## **📄 License**
-
-**MIT License**
 
 ---
