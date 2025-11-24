@@ -1,69 +1,85 @@
-# Axiom Trade Token Discovery Table
+# **Axiom Trade — Token Discovery Table**
 
-A pixel-perfect replica of Axiom Trade's token discovery table with real-time pricing, advanced filtering, and professional trading UI patterns.
+A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery Interface**, featuring real-time pricing, advanced filtering, and professional trading UI/UX patterns optimized for performance.
 
-## Features
+---
 
-### Core Components
-- **Three Token Categories**: New Pairs, Final Stretch, Migrated tokens
-- **Real-Time Updates**: WebSocket mock integration with smooth price animations
-- **Advanced Sorting**: Click any column header to sort (ascending/descending)
-- **Search Filtering**: Search by token name, symbol, or contract address
-- **Responsive Design**: Optimized for mobile and desktop
+## **🚀 Features**
 
-### UI/UX Patterns
-- **Popovers**: Detailed token information on hover
-- **Tooltips**: Additional context for metrics
-- **Modals**: View detailed token analytics (extensible)
-- **Dropdowns**: Token action menu with copy/explorer/alerts
-- **Loading States**: Skeleton screens with shimmer animations
-- **Error Boundaries**: Graceful error handling with recovery
+### **Core Components**
 
-### Performance Optimizations
-- **Memoized Components**: React.memo on all table rows and headers
-- **React Compiler**: Enabled for automatic optimization
-- **Debounced Search**: 300ms delay to reduce re-renders
-- **Virtual Scrolling Ready**: Architecture supports rendering 1000+ items
-- **Code Splitting**: Lazy-loaded components where applicable
+* **Three Token Categories**
 
-### Accessibility
-- **ARIA Labels**: Proper semantic HTML with accessible roles
-- **Keyboard Navigation**: Tab through interactive elements
-- **Focus Management**: Trap focus in modals, restore on close
-- **Screen Reader Support**: sr-only text for visual-only content
-- **Color Contrast**: WCAG AA compliant (7+ contrast ratio)
+  * New Pairs
+  * Final Stretch
+  * Migrated Tokens
+* **Real-Time Price Updates** (WebSocket mock with smooth animations)
+* **Column Sorting** (ascending/descending)
+* **Global Search Filter** (name, symbol, contract address)
+* **Fully Responsive Layout**
 
-## Tech Stack
+### **UI/UX Enhancements**
 
-### Frontend
-- **Next.js 16**: App Router with React 19.2
-- **TypeScript**: Strict mode for type safety
-- **Tailwind CSS v4**: Utility-first styling with custom theme
-- **Redux Toolkit**: Complex state management
-- **React Query**: Data fetching and caching
+* **Popovers** for token insights
+* **Tooltips** for metric explanations
+* **Modals** for deep analytics
+* **Dropdown Menus** (copy address, explore, set alerts)
+* **Skeleton Loaders** with shimmer effect
+* **Error Boundaries** for fallback UI
 
-### State Management
-- **Filter Slice**: Tab selection and search queries
-- **Price Slice**: Real-time price updates
-- **UI Slice**: Modal/popover state
+---
 
-### UI Components
-- **Radix UI**: Headless components (Popover, Tooltip, Dropdown)
-- **Lucide Icons**: 24px consistent icon set
-- **shadcn/ui patterns**: Dialog, dropdown menu implementations
+## **⚡ Performance Optimizations**
 
-## Architecture
+* React Compiler enabled
+* Highly memoized row and header components
+* 300ms debounced search
+* Architecture ready for virtual scrolling (1000+ tokens)
+* Code splitting & lazy-loaded heavy components
+* Optimized formatting and stable sorting
 
-### Directory Structure
-\`\`\`
+---
+
+## **♿ Accessibility**
+
+* Fully semantic HTML + ARIA
+* Keyboard navigation across tabs, rows, menus
+* Focus trapping & restoration in dialogs
+* Screen reader-friendly labels
+* High contrast ratios (WCAG AA compliant)
+
+---
+
+## **🧱 Tech Stack**
+
+### **Frontend**
+
+* **Next.js 16**
+* **React 19.2**
+* **TypeScript (strict mode)**
+* **Tailwind CSS v4**
+* **Redux Toolkit**
+* **React Query**
+
+### **UI Libraries**
+
+* **Radix UI** (Popover, Tooltip, Dropdown)
+* **shadcn/ui patterns** (Dialog, DropdownMenu)
+* **Lucide Icons**
+
+---
+
+## **📁 Directory Structure**
+
+```
 ├── app/
-│   ├── page.tsx              # Main entry with Redux/Query providers
-│   ├── layout.tsx            # Root layout with metadata
-│   └── globals.css           # Design tokens and animations
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
 ├── components/
-│   ├── header.tsx            # Tab/search header
-│   ├── token-table.tsx       # Main table component
-│   ├── error-boundary.tsx    # Error handling
+│   ├── header.tsx
+│   ├── token-table.tsx
+│   ├── error-boundary.tsx
 │   ├── table/
 │   │   ├── token-table-header.tsx
 │   │   ├── token-table-row.tsx
@@ -77,137 +93,134 @@ A pixel-perfect replica of Axiom Trade's token discovery table with real-time pr
 │       ├── tooltip.tsx
 │       ├── popover.tsx
 │       ├── modal.tsx
-│       └── ... (other UI components)
+│       └── ...
 ├── lib/
 │   ├── api/
-│   │   ├── client.ts         # API client
-│   │   └── mock-tokens.ts    # Mock data
+│   │   ├── client.ts
+│   │   └── mock-tokens.ts
 │   ├── redux/
 │   │   ├── store.ts
 │   │   └── slices/
 │   ├── websocket/
-│   │   └── price-stream.ts   # WebSocket mock
+│   │   └── price-stream.ts
 │   ├── a11y/
-│   │   └── focus-manager.ts  # Accessibility utilities
-│   ├── performance/
-│   │   └── metrics.ts        # Web Vitals tracking
-│   ├── types.ts              # TypeScript interfaces
-│   ├── format.ts             # Number formatting
-│   └── query-client.ts       # React Query setup
+│   │   └── focus-manager.ts
+│   ├── performance/metrics.ts
+│   ├── types.ts
+│   ├── format.ts
+│   └── query-client.ts
 ├── hooks/
-│   ├── use-tokens.ts         # Fetch tokens
-│   ├── use-real-time-price.ts # WebSocket hook
-│   ├── use-debounce.ts       # Debounce hook
-│   └── use-toast.ts          # Toast notifications
+│   ├── use-tokens.ts
+│   ├── use-real-time-price.ts
+│   ├── use-debounce.ts
+│   └── use-toast.ts
 └── scripts/
-    └── (future: testing, data generation)
-\`\`\`
+```
 
-### Component Hierarchy
-\`\`\`
-App (Provider wrapper)
+---
+
+## **📊 Component Hierarchy**
+
+```
+App (Providers)
 ├── Header
 │   ├── Tabs
 │   └── Search Input
 └── TokenTable
-    ├── TableHeader (Sortable)
+    ├── Sortable TableHeader
     └── TableBody
-        └── TokenTableRow[] (Memoized)
+        └── Memoized TokenTableRow[]
             ├── PriceChangeIndicator
             ├── RiskBadge
-            └── TokenMenu (Dropdown)
-\`\`\`
+            └── TokenMenu
+```
 
-## Performance Metrics
+---
 
-### Target Lighthouse Scores
-- **Performance**: ≥90
-- **Accessibility**: ≥95
-- **Best Practices**: ≥90
-- **SEO**: ≥90
+## **📈 Performance Targets**
 
-### Optimization Techniques
-- React Compiler enabled for automatic optimization
-- Memoized components prevent unnecessary re-renders
-- Debounced search reduces filtering overhead
-- Virtual scrolling ready for large datasets
-- Image optimization with next/image
-- CSS class minification with Tailwind
+| Metric         | Target |
+| -------------- | ------ |
+| Performance    | ≥ 90   |
+| Accessibility  | ≥ 95   |
+| Best Practices | ≥ 90   |
+| SEO            | ≥ 90   |
 
-## Getting Started
+### **Techniques Used**
 
-### Installation
-\`\`\`bash
-# Clone the repository
+* React Compiler
+* Stable memoized components
+* Debounced search
+* Code splitting
+* Image optimization
+* Virtualization-ready table architecture
+
+---
+
+## **🔌 Real-Time Price Updates**
+
+The WebSocket mock provides:
+
+* Random ±1% price oscillations
+* Green/red animated transitions
+* Auto reconnection with backoff
+* Heartbeat pings for stability
+
+### Replace With Live WebSocket
+
+Edit `lib/websocket/price-stream.ts`:
+
+```ts
+this.ws = new WebSocket('wss://your-api.com/prices');
+```
+
+---
+
+## **🧪 Getting Started**
+
+### Install
+
+```bash
 git clone <repository>
-
-# Install dependencies
 npm install
-
-# Run development server
 npm run dev
-\`\`\`
+```
 
-### Development
-\`\`\`bash
-# Run with debug logging
+### Developer Tools
+
+```bash
 npm run dev -- --debug
-
-# Run type checking
 npm run type-check
-
-# Run Lighthouse audit
 npm run lighthouse
-\`\`\`
+```
 
-## Real-Time Price Updates
+---
 
-The WebSocket mock simulates real-time token pricing with:
-- Random price fluctuations ±1% per second
-- Smooth color transitions (green for gains, red for losses)
-- Automatic connection/disconnection management
-- Error recovery and reconnection logic
+## **📱 Browser Support**
 
-### Replace Mock with Real WebSocket
-In `lib/websocket/price-stream.ts`, replace the mock implementation:
-\`\`\`typescript
-class PriceStreamManager {
-  connect(tokenIds: string[]): void {
-    // Replace with real WebSocket connection
-    // this.ws = new WebSocket('wss://your-api.com/prices');
-  }
-}
-\`\`\`
+* Chrome / Edge (latest 2 versions)
+* Firefox (latest 2 versions)
+* Safari (latest 2 versions)
+* iOS 14+
+* Android 12+
 
-## Accessibility Checklist
+---
 
-- [x] Semantic HTML elements
-- [x] ARIA labels and roles
-- [x] Keyboard navigation (Tab, Enter, Escape)
-- [x] Focus indicators and management
-- [x] Color contrast ≥7:1
-- [x] Screen reader support
-- [x] Error messages with guidance
-- [x] Loading state announcements
+## **🔮 Future Enhancements**
 
-## Browser Support
+* Real exchange WebSocket feed
+* Price alerts & notifications
+* User authentication + watchlists
+* TradingView lightweight charts
+* CSV/PDF export
+* Light/dark theme toggle
+* Liquidity & volatility filter sliders
+* Full historical charting
 
-- Chrome/Edge: Latest 2 versions
-- Firefox: Latest 2 versions
-- Safari: Latest 2 versions
-- Mobile: iOS 14+, Android 12+
+---
 
-## Future Enhancements
+## **📄 License**
 
-- [ ] WebSocket integration with real exchange API
-- [ ] Advanced charting with TradingView Lightweight Charts
-- [ ] User authentication and watchlists
-- [ ] Export to CSV/PDF
-- [ ] Dark/light theme toggle
-- [ ] Notification system with price alerts
-- [ ] Advanced filtering (liquidity, risk score ranges)
-- [ ] Historical data and charts
+**MIT License**
 
-## License
-
-MIT
+---
