@@ -6,9 +6,9 @@ import type { Token } from "@/lib/types"
 import { formatPrice, formatNumber, formatVolume } from "@/lib/format"
 import { PriceChangeIndicator } from "@/components/ui/price-change-indicator"
 import { RiskBadge } from "@/components/ui/risk-badge"
-import { TokenMenu } from "@/components/ui/token-menu"
 import { useRealTimePrice } from "@/hooks/use-real-time-price"
 import { cn } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
 
 interface TokenTableRowProps {
   token: Token
@@ -29,14 +29,20 @@ export const TokenTableRow = memo(function TokenTableRow({ token }: TokenTableRo
     setTimeout(() => setPriceChangeAnimation(null), 600)
   }
 
+  const getVolatilityColor = (vol: number) => {
+    if (vol < 4) return "text-success"
+    if (vol < 8) return "text-foreground"
+    return "text-warning"
+  }
+
   return (
-    <tr className="group relative border-b border-border/40 transition-all duration-200 hover:bg-white/[0.02]">
-      <td className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary scale-y-0 transition-transform duration-200 group-hover:scale-y-100" />
+    <tr className="group relative border-b border-border/30 transition-all duration-300 hover:bg-white/5">
+      <td className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary to-transparent scale-y-0 transition-transform duration-300 group-hover:scale-y-100" />
 
       {/* Token Name & Symbol */}
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="flex items-center gap-3">
-          <div className="relative w-9 h-9 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 ring-1 ring-primary/20 flex items-center justify-center flex-shrink-0 shadow-[0_0_10px_-3px_var(--color-primary)] overflow-hidden">
+          <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-primary/25 to-primary/5 ring-1 ring-primary/30 flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/20 overflow-hidden transition-all group-hover:ring-primary/50">
             {!imageError && token.imageUrl ? (
               <Image
                 src={token.imageUrl || "/placeholder.svg"}
@@ -46,14 +52,21 @@ export const TokenTableRow = memo(function TokenTableRow({ token }: TokenTableRo
                 onError={() => setImageError(true)}
               />
             ) : (
-              <span className="text-primary font-bold">{token.symbol[0]}</span>
+              <span className="text-primary font-bold text-sm">{token.symbol[0]}</span>
             )}
           </div>
-          <div className="min-w-0 flex flex-col">
-            <span className="font-semibold text-sm text-foreground tracking-tight group-hover:text-primary transition-colors">
-              {token.name}
-            </span>
-            <span className="text-[11px] font-mono text-muted-foreground">{token.symbol}</span>
+          <div className="min-w-0 flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-sm text-foreground tracking-tight group-hover:text-primary transition-colors">
+                {token.name}
+              </span>
+              {token.verified && (
+                <Badge variant="outline" className="h-4 px-1.5 text-[10px] bg-success/5 border-success/30 text-success">
+                  Verified
+                </Badge>
+              )}
+            </div>
+            <span className="text-xs font-mono text-muted-foreground">{token.symbol}</span>
           </div>
         </div>
       </td>
@@ -61,9 +74,11 @@ export const TokenTableRow = memo(function TokenTableRow({ token }: TokenTableRo
       {/* Price with animation */}
       <td
         className={cn(
-          "px-6 py-4 whitespace-nowrap font-mono text-sm tabular-nums transition-colors duration-300",
-          priceChangeAnimation === "up" && "text-success bg-success/5",
-          priceChangeAnimation === "down" && "text-destructive bg-destructive/5",
+          "px-6 py-4 whitespace-nowrap font-mono text-sm tabular-nums font-medium transition-all duration-300",
+          priceChangeAnimation === "up" &&
+            "text-success bg-success/8 rounded-lg shadow-[0_0_12px_-3px_rgba(52,211,153,0.3)]",
+          priceChangeAnimation === "down" &&
+            "text-destructive bg-destructive/8 rounded-lg shadow-[0_0_12px_-3px_rgba(251,113,133,0.3)]",
           !priceChangeAnimation && "text-foreground/90",
         )}
       >
@@ -100,9 +115,12 @@ export const TokenTableRow = memo(function TokenTableRow({ token }: TokenTableRo
         <RiskBadge score={token.riskScore} />
       </td>
 
-      {/* Actions */}
-      <td className="px-6 py-4 whitespace-nowrap text-right">
-        <TokenMenu token={token} />
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="flex items-center justify-center">
+          <div className={cn("font-mono text-sm font-medium tabular-nums", getVolatilityColor(token.volatility))}>
+            {token.volatility.toFixed(1)}%
+          </div>
+        </div>
       </td>
     </tr>
   )

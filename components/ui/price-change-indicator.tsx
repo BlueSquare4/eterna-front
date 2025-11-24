@@ -1,6 +1,7 @@
 "use client"
 
 import { memo } from "react"
+import { TrendingUp, TrendingDown } from "lucide-react"
 
 interface PriceChangeIndicatorProps {
   change: number
@@ -13,18 +14,19 @@ export const PriceChangeIndicator = memo(function PriceChangeIndicator({ change 
   return (
     <div
       className={`
-      flex items-center gap-1.5 text-sm font-mono font-medium tabular-nums
-      ${isPositive ? "text-emerald-400" : "text-rose-400"}
+      flex items-center gap-1.5 text-sm font-mono font-bold tabular-nums px-2.5 py-1 rounded-lg
+      ${
+        isPositive
+          ? "text-emerald-400 bg-emerald-500/12 border border-emerald-500/25"
+          : "text-rose-400 bg-rose-500/12 border border-rose-500/25"
+      }
     `}
     >
-      <div
-        className={`
-        flex items-center justify-center w-4 h-4 rounded text-[10px] 
-        ${isPositive ? "bg-emerald-500/10 text-emerald-400" : "bg-rose-500/10 text-rose-400"}
-      `}
-      >
-        {isPositive ? "▲" : "▼"}
-      </div>
+      {isPositive ? (
+        <TrendingUp className="w-3.5 h-3.5 flex-shrink-0" />
+      ) : (
+        <TrendingDown className="w-3.5 h-3.5 flex-shrink-0" />
+      )}
       <span>{displayValue}</span>
     </div>
   )

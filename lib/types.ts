@@ -13,6 +13,7 @@ export interface Token {
   liquidity: number
   holders: number
   riskScore: number
+  volatility: number
   lastUpdated: number
   category: "new-pairs" | "final-stretch" | "migrated"
   verified: boolean

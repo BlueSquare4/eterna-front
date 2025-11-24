@@ -14,8 +14,8 @@ interface TokenTableHeaderProps {
 }
 
 const SortIcon = memo(function SortIcon({ active, order }: { active: boolean; order: SortOrder }) {
-  if (!active) return <div className="w-4 h-4" />
-  return order === "asc" ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />
+  if (!active) return <div className="w-3.5 h-3.5" />
+  return order === "asc" ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />
 })
 
 export const TokenTableHeader = memo(function TokenTableHeader({ sortKey, sortOrder, onSort }: TokenTableHeaderProps) {
@@ -27,26 +27,27 @@ export const TokenTableHeader = memo(function TokenTableHeader({ sortKey, sortOr
     { label: "Market Cap", key: "marketCap" as const, sortable: true },
     { label: "Liquidity", key: "liquidity" as const, sortable: true },
     { label: "Holders", key: "holders" as const, sortable: true },
-    { label: "Risk Score", key: "riskScore" as const, sortable: true },
-    { label: "Actions", key: "id" as const, sortable: false },
+    { label: "Risk", key: "riskScore" as const, sortable: true },
+    { label: "Volatility", key: "volatility" as const, sortable: true },
   ]
 
   return (
     <thead>
-      <tr className="border-b border-border/60 bg-background/80 backdrop-blur-md sticky top-0 z-10 shadow-sm">
+      <tr className="border-b border-border/50 bg-gradient-to-r from-background/90 via-background/80 to-background/90 backdrop-blur-xl sticky top-0 z-20 shadow-lg shadow-primary/5">
         {headers.map((header) => (
           <th
             key={header.key}
-            className="px-6 py-3 text-left text-[11px] font-medium text-muted-foreground uppercase tracking-widest select-none"
+            className="px-6 py-4 text-left text-[10px] font-bold text-muted-foreground uppercase tracking-widest select-none"
           >
             {header.sortable ? (
               <button
                 onClick={() => onSort(header.key as SortKey)}
-                className="flex items-center gap-1.5 hover:text-foreground transition-colors group"
+                className="flex items-center gap-1.5 hover:text-foreground transition-all duration-200 group hover:translate-y-[-2px]"
+                aria-label={`Sort by ${header.label}`}
               >
                 {header.label}
                 <div
-                  className={`transition-opacity duration-200 ${sortKey === header.key ? "opacity-100 text-primary" : "opacity-0 group-hover:opacity-50"}`}
+                  className={`transition-all duration-200 ${sortKey === header.key ? "opacity-100 text-primary scale-110" : "opacity-30 group-hover:opacity-60"}`}
                 >
                   <SortIcon active={true} order={sortKey === header.key ? sortOrder : "asc"} />
                 </div>

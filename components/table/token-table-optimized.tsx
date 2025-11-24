@@ -14,13 +14,6 @@ type SortOrder = "asc" | "desc"
 
 const DEBOUNCE_DELAY = 300
 
-/**
- * Optimized token table with:
- * - Memoized components to prevent unnecessary re-renders
- * - Debounced search to reduce filtering operations
- * - Efficient sorting algorithm
- * - Accessibility features (ARIA labels, keyboard navigation)
- */
 const TokenTableOptimized = memo(function TokenTableOptimized() {
   const [sortKey, setSortKey] = useState<SortKey>("price")
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc")
@@ -29,7 +22,6 @@ const TokenTableOptimized = memo(function TokenTableOptimized() {
   const { activeTab, searchQuery } = useSelector((state: RootState) => state.filters)
   const { data: tokens, isLoading, error } = useTokens(activeTab)
 
-  // Debounce search query to reduce re-renders
   useMemo(() => {
     const timer = setTimeout(() => {
       setDebouncedQuery(searchQuery)
@@ -78,16 +70,19 @@ const TokenTableOptimized = memo(function TokenTableOptimized() {
 
   if (error) {
     return (
-      <div className="rounded-lg border border-border bg-card p-8 text-center" role="alert">
-        <p className="text-destructive font-medium">Failed to load tokens</p>
+      <div
+        className="rounded-xl border border-border/40 bg-card/50 backdrop-blur-sm p-8 text-center shadow-lg shadow-destructive/10"
+        role="alert"
+      >
+        <p className="text-destructive font-bold text-lg">Failed to load tokens</p>
         <p className="text-muted-foreground text-sm mt-2">{error.message}</p>
       </div>
     )
   }
 
   return (
-    <div className="rounded-lg border border-border bg-card overflow-hidden">
-      <div className="overflow-x-auto" role="region" aria-label="Token table">
+    <div className="rounded-xl border border-border/40 bg-card/30 backdrop-blur-md overflow-hidden shadow-xl shadow-primary/5">
+      <div className="overflow-x-auto" role="region" aria-label="Token discovery table with real-time data">
         <table className="w-full" role="table">
           <TokenTableHeader sortKey={sortKey} sortOrder={sortOrder} onSort={handleSort} />
           <tbody>

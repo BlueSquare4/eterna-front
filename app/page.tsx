@@ -9,6 +9,7 @@ import { Header } from "@/components/header"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { Toaster } from "@/components/ui/toaster"
 import { BeginnerGuide } from "@/components/guide/beginner-guide"
+import { CryptoNewsSidebar } from "@/components/crypto-news-sidebar"
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
             </main>
             <Toaster />
             <BeginnerGuide />
+            <CryptoNewsSidebar />
           </div>
         </ErrorBoundary>
       </QueryClientProvider>
