@@ -10,7 +10,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Axiom Trade - Token Discovery",
   description: "Real-time token trading discovery with advanced filtering and analytics",
-  generator: "v0.app",
+  generator: "AJ",
   icons: {
     icon: [
       {
