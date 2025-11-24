@@ -1,14 +1,14 @@
-# **Axiom Trade — Token Discovery Table**
+# Axiom Trade — Token Discovery Table
 
-**Live Demo:** [https://v0-token-trading-table-tau.vercel.app/]([https://v0-token-trading-table-tau.vercel.app/](https://v0-token-trading-table-rhgsomt38-bluesquare4s-projects.vercel.app/))
+**Live Demo:** [https://v0-token-trading-table-rhgsomt38-bluesquare4s-projects.vercel.app/](https://v0-token-trading-table-rhgsomt38-bluesquare4s-projects.vercel.app/)
 
 A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery Interface**, featuring real-time pricing, advanced filtering, and professional trading UI/UX patterns optimized for performance.
 
 ---
 
-## **🚀 Features**
+## 🚀 Features
 
-### **Core Components**
+### Core Components
 
 * **Three Token Categories**
 
@@ -20,7 +20,7 @@ A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery I
 * **Global Search Filter** (name, symbol, contract address)
 * **Fully Responsive Layout**
 
-### **UI/UX Enhancements**
+### UI/UX Enhancements
 
 * **Popovers** for token insights
 * **Tooltips** for metric explanations
@@ -31,7 +31,7 @@ A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery I
 
 ---
 
-## **⚡ Performance Optimizations**
+## ⚡ Performance Optimizations
 
 * React Compiler enabled
 * Highly memoized table rows & headers
@@ -42,7 +42,7 @@ A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery I
 
 ---
 
-## **♿ Accessibility**
+## ♿ Accessibility
 
 * Semantic HTML + ARIA attributes
 * Full keyboard navigation
@@ -52,9 +52,9 @@ A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery I
 
 ---
 
-## **🧱 Tech Stack**
+## 🧱 Tech Stack
 
-### **Frontend**
+### Frontend
 
 * **Next.js 16**
 * **React 19.2**
@@ -63,7 +63,7 @@ A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery I
 * **Redux Toolkit**
 * **React Query**
 
-### **UI Libraries**
+### UI Libraries
 
 * **Radix UI** (Popover, Tooltip, Dropdown)
 * **shadcn/ui patterns**
@@ -71,7 +71,7 @@ A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery I
 
 ---
 
-## **📁 Directory Structure**
+## 📁 Directory Structure
 
 ```
 ├── app/
@@ -120,7 +120,7 @@ A production-grade, pixel-perfect replica of **Axiom Trade’s Token Discovery I
 
 ---
 
-## **📊 Component Hierarchy**
+## 📊 Component Hierarchy
 
 ```
 App (Providers)
@@ -138,7 +138,7 @@ App (Providers)
 
 ---
 
-## **📈 Performance Targets**
+## 📈 Performance Targets
 
 | Metric         | Target |
 | -------------- | ------ |
@@ -147,7 +147,7 @@ App (Providers)
 | Best Practices | ≥ 90   |
 | SEO            | ≥ 90   |
 
-### **Techniques Used**
+### Techniques Used
 
 * React Compiler
 * Stable memoized components
@@ -158,7 +158,7 @@ App (Providers)
 
 ---
 
-## **🔌 Real-Time Price Updates**
+## 🔌 Real-Time Price Updates
 
 The WebSocket mock provides:
 
@@ -167,7 +167,7 @@ The WebSocket mock provides:
 * Heartbeat pings
 * Auto reconnect with backoff
 
-### Replace Mock with Real WebSocket
+### Replace Mock with Live WebSocket
 
 Update `lib/websocket/price-stream.ts`:
 
@@ -177,7 +177,7 @@ this.ws = new WebSocket('wss://your-api.com/prices');
 
 ---
 
-## **🧪 Getting Started**
+## 🧪 Getting Started
 
 ### Install & Run
 
@@ -197,7 +197,7 @@ npm run lighthouse
 
 ---
 
-## **📱 Browser Support**
+## 📱 Browser Support
 
 * Chrome / Edge (latest 2 versions)
 * Firefox (latest 2 versions)
@@ -207,7 +207,7 @@ npm run lighthouse
 
 ---
 
-## **🔮 Future Enhancements**
+## 🔮 Future Enhancements
 
 * Live exchange WebSocket feed
 * Price alerts & notifications
@@ -219,3 +219,13 @@ npm run lighthouse
 * Full historical charting
 
 ---
+
+## 📄 License
+
+**MIT License**
+
+---
+
+## Reference Server File
+
+You can inspect the server entry used during testing here: [/mnt/data/fastify.ts](/mnt/data/fastify.ts)
